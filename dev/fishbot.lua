@@ -1,11 +1,41 @@
--- v0.1 fish usa
-
-local a_flagbite = 0xcd3d
+-- v0.1 fishbot
 --kingler
 local target = 0x8a
-local a_fished_species = 0xd059
+
+--da confermare per giallo e rb/giapponesi, confermati per rb eu e usa
+local a_flagbite = 0xcd3d
+
+local a_fished_species
+local ivs_addr
+local version = memory.readword(0x14e)
+if version == 0xc1a2 or version == 0x36dc or version == 0xd5dd or version == 0x299c then
+	print("RBGY JPN game detected")
+	print("not supported yet")
+	return
+elseif version == 0xe691 or version == 0xa9d then
+	print("RB USA detected")
+	a_fished_species = 0xd059
+	ivs_addr = 0xcff1
+elseif version == 0x7c04 then
+	print("Y USA detected")
+	print("not supported yet")
+	return
+elseif version == 0xd289 or version == 0x9c5e or version == 0xdc5c or version == 0xbc2e or version == 0x4a38 or version == 0xd714 or version == 0xfc7a or version == 0xa456 then
+	print("RB EUR detected")
+	a_fished_species = 0xd05e
+	ivs_addr = 0xcff6
+elseif version == 0x8f4e or version == 0xfb66 or version == 0x3756 or version == 0xc1b7 then
+	print("Y EUR detected")
+	print("not supported yet")
+	return
+else
+	print(string.format("unknown version, code: %4x", version))
+  print("script stopped")
+  return
+end
+
 local atkdef
-local spespca
+local spespc
 
 function shiny(atkdef,spespc)
 	if spespc == 0xAA then
@@ -24,6 +54,7 @@ state = savestate.create()
 savestate.save(state)
 while true do
 	emu.frameadvance()
+	savestate.save(state)
 	joypad.set(1, {A=true})
 	emu.frameadvance()
 	i=0
@@ -57,28 +88,27 @@ while true do
 					
 					joypad.set(1, {A=true})
 					emu.frameadvance()
-					atkdef = memory.readbyte(0xcff1)
-					spespc = memory.readbyte(0xcff2)
+					atkdef = memory.readbyte(ivs_addr)
+					spespc = memory.readbyte(ivs_addr+1)
 				end
-				atkdef = memory.readbyte(0xcff1)
-				spespc = memory.readbyte(0xcff2)
-				--atkdef = memory.readbyte(0xcff1)
-				--spespc = memory.readbyte(0xcff2)
-				print(atkdef)
-				print(spespc)
+				atkdef = memory.readbyte(ivs_addr)
+				spespc = memory.readbyte(ivs_addr+1)
 				if shiny(atkdef,spespc) then
 					print("shiny found")
 					return
 				else
+					print("wrong ivs")
 					savestate.load(state)
 				end
 			end
 		else
 			--specie sbagliata
+			print(string.format("wrong species %d %2X", memory.readbyte(a_fished_species), memory.readbyte(0xffd3)))
 			savestate.load(state)
 		end
 	else
 		--non ho pescato niente
+		print("nothing bited")
 		savestate.load(state)
 	end
 		
