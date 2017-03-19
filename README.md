@@ -1,8 +1,11 @@
 # rbylua
 Lua scripts for shiny hunting in RBY games.
 
+Work only with vba rr 23.6.
+
 Do not use lua scripts inside the dev folder, since they're not ready yet.
 # How to use
+Choose the appropriate region of your ROM. If you're unsure about it, run version_check first.
 ## Gift ##
 Valid also for starters. DVs are generated after prompted to nickname your Pokémon.
 
