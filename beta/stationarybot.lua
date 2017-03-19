@@ -21,8 +21,8 @@ elseif version == 0x8f4e or version == 0xfb66 or version == 0x3756 or version ==
   base_address = 0xcff5
 else
 	print(string.format("unknown versione, code: %4x", version))
-  print("script stopped")
-  return
+  	print("script stopped")
+  	return
 end
 
 
@@ -56,8 +56,6 @@ while true do
 		atkdef = memory.readbyte(base_address)
 		spespc = memory.readbyte(base_address+1)
 	end
-	print(atkdef)
-	print(spespc)
 	if shiny(atkdef,spespc) then
 		print("Shiny!!! Script stopped.")
 		print(string.format("atk: %d", math.floor(atkdef/16)))
@@ -67,6 +65,7 @@ while true do
 		savestate.save(state)
 		break
 	else
+		print("discarded")
 		savestate.load(state)
 	end
 	
