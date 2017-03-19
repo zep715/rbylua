@@ -1,4 +1,5 @@
---v0.1 rby ita stationary shiny
+--v0.2 rby eur stationary shiny
+--added better battle check
 if memory.readbyte(0x013c) == 0x59 then
 	yellow = 1
 else
@@ -8,7 +9,7 @@ end
 local addr = 0xcff6-yellow
 local atkdef
 local spespc
-
+local flag_addr = 0xc027
 function shiny(atkdef,spespc)
 	if spespc == 0xAA then
 		if atkdef == 0xA2 or atkdef == 0xA3 or atkdef == 0xA6 or atkdef == 0xA7 or atkdef == 0xAA or atkdef == 0xAB or atkdef == 0xAE or atkdef == 0xAF then
@@ -33,7 +34,7 @@ while true do
 	spespc = 0
 	savestate.save(state)
 	
-	while atkdef == 0 and spespc == 0 do
+	while memory.readbyte(flag_addr)~=0xf0 do
 		joypad.set(1, {A=false})
 		vba.frameadvance()
 		atkdef = memory.readbyte(addr)
