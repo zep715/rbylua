@@ -53,8 +53,8 @@ while true do
 	while memory.readbyte(flag_addr)~=0xf0 do
 		joypad.set(1, {A=false})
 		vba.frameadvance()
-		atkdef = memory.readbyte(addr)
-		spespc = memory.readbyte(addr+1)
+		atkdef = memory.readbyte(base_address)
+		spespc = memory.readbyte(base_address+1)
 	end
 	print(atkdef)
 	print(spespc)
