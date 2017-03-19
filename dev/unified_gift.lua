@@ -1,8 +1,10 @@
 local version = memory.readword(0x14e)
 local base_address
+local atkdef
+local spespc
 
 if version == 0xc1a2 or version == 0x36dc or version == 0xd5dd or version == 0x299c then
-	print("RBY JPN game detected")
+	print("RBGY JPN game detected")
   base_address = 0xd123
 elseif version == 0xe691 or version == 0xa9d then
 	print("red/blue USA detected")
@@ -24,8 +26,7 @@ end
 
 local partyno = memory.readbyte(base_address)-1
 local addr = (base_address+0x23)+partyno*0x2C
-local atkdef
-local spespc
+
  
  
 function shiny(atkdef,spespc)
@@ -57,6 +58,8 @@ while true do
         atkdef = memory.readbyte(addr)
         spespc = memory.readbyte(addr+1)
     end
+	print(atkdef)
+	print(spespc)
     if shiny(atkdef,spespc) then
         print("Shiny!!! Script stopped.")
         print(string.format("atk: %d", math.floor(atkdef/16)))
