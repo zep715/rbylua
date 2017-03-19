@@ -5,7 +5,6 @@ local addr = 0xcfd8
 local atkdef
 local spespc
 local flag_addr = 0xc027
-
 function shiny(atkdef,spespc)
 	if spespc == 0xAA then
 		if atkdef == 0xA2 or atkdef == 0xA3 or atkdef == 0xA6 or atkdef == 0xA7 or atkdef == 0xAA or atkdef == 0xAB or atkdef == 0xAE or atkdef == 0xAF then
