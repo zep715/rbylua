@@ -1,5 +1,4 @@
 local version = memory.readword(0x14e)
-local yellow = 0
 local base_address
 
 if version == 0xc1a2 or version == 0x36dc or version == 0xd5dd or version == 0x299c then
