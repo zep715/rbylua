@@ -62,16 +62,14 @@ while true do
 				end
 				atkdef = memory.readbyte(0xcff1)
 				spespc = memory.readbyte(0xcff2)
-				print("gesuuu")
 				--atkdef = memory.readbyte(0xcff1)
 				--spespc = memory.readbyte(0xcff2)
 				print(atkdef)
 				print(spespc)
 				if shiny(atkdef,spespc) then
-					print("found")
+					print("shiny found")
 					return
 				else
-					print("ivs sbagliate")
 					savestate.load(state)
 				end
 			end
