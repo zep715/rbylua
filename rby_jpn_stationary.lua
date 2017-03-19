@@ -35,6 +35,8 @@ while true do
 		atkdef = memory.readbyte(addr)
 		spespc = memory.readbyte(addr+1)
 	end
+	print(atkdef)
+	print(spespc)
 	if shiny(atkdef,spespc) then
 		print("Shiny!!! Script stopped.")
 		print(string.format("atk: %d", math.floor(atkdef/16)))
