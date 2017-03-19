@@ -62,6 +62,8 @@ while true do
         atkdef = memory.readbyte(dv_addr)
         spespc = memory.readbyte(dv_addr+1)
     end
+	print(atkdef)
+	print(spespc)
     if shiny(atkdef,spespc) then
         print("Shiny!!! Script stopped.")
         print(string.format("atk: %d", math.floor(atkdef/16)))
