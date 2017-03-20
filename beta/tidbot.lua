@@ -40,7 +40,7 @@ while true do
 		vba.frameadvance()
 		tid = memory.readword(a_tid)
 	end
-	print(tid)
+	print(reverseword(tid))
 	if tid == desired_tid then
 		print("trovato")
 		return
