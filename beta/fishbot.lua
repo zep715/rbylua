@@ -1,16 +1,19 @@
 -- v0.1 fishbot
---kingler
-local target = 0x8a
+--set up species, look for serebii for fishable pokémon in your area and look 
+--http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_(Generation_I)
+--for index number and set in target
+--example horsea
+--local target = 92
+local target
 
---da confermare per giallo e rb/giapponesi, confermati per rb eu e usa
+--da confermare per giallo e rbg/giapponesi
 local a_flagbite = 0xcd3d
 
 local a_fished_species
 local ivs_addr
 local version = memory.readword(0x14e)
 if version == 0xc1a2 or version == 0x36dc or version == 0xd5dd or version == 0x299c then
-	print("RBGY JPN game detected")
-	print("not supported yet")
+	print("rbgy jpn not supported yet")
 	return
 elseif version == 0xe691 or version == 0xa9d then
 	print("RB USA detected")
@@ -18,16 +21,16 @@ elseif version == 0xe691 or version == 0xa9d then
 	ivs_addr = 0xcff1
 elseif version == 0x7c04 then
 	print("Y USA detected")
-	print("not supported yet")
-	return
+	a_fished_species = 0xd058
+	ivs_addr = 0xcff0
 elseif version == 0xd289 or version == 0x9c5e or version == 0xdc5c or version == 0xbc2e or version == 0x4a38 or version == 0xd714 or version == 0xfc7a or version == 0xa456 then
 	print("RB EUR detected")
 	a_fished_species = 0xd05e
 	ivs_addr = 0xcff6
 elseif version == 0x8f4e or version == 0xfb66 or version == 0x3756 or version == 0xc1b7 then
 	print("Y EUR detected")
-	print("not supported yet")
-	return
+	a_fished_species = 0xd05d
+	ivs_addr = 0xcff5
 else
 	print(string.format("unknown version, code: %4x", version))
   print("script stopped")
@@ -49,6 +52,10 @@ function shiny(atkdef,spespc)
 	end
 end
 
+if target == nil then
+	print("You have not setup any species")
+	return
+end
 
 state = savestate.create()
 savestate.save(state)
@@ -59,7 +66,7 @@ while true do
 	emu.frameadvance()
 	i=0
 	--aspettiamo i risultati della pesca
-	while i < 130 do
+	while i < 200 do
 		emu.frameadvance()
 		i = i+1
 	end
@@ -93,6 +100,8 @@ while true do
 				end
 				atkdef = memory.readbyte(ivs_addr)
 				spespc = memory.readbyte(ivs_addr+1)
+				print(atkdef)
+				print(spespc)
 				if shiny(atkdef,spespc) then
 					print("shiny found")
 					return
