@@ -44,7 +44,6 @@ while true do
 	partysize = memory.readbyte(partystart-8)-1
 	
 	p = 1
-	print(partysize)
 	for i = (partystart+0xe),(partystart+ 0xe +partysize*0x2c),0x2c do
 		pexp =  0x10000*memory.readbyte(i)+0x100*memory.readbyte(i+1) + memory.readbyte(i+2)
 		gui.text(2,p*10,tostring(p).." "..naturename[pexp%25+1]..shiny(memory.readbyte(i+0xd), memory.readbyte(i+0xe)))
