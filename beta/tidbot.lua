@@ -1,3 +1,4 @@
+--edit this line with desired tid, in decimal, value between 0 and 65535
 local desired_tid = 32767
 local a_tid
 local tid
