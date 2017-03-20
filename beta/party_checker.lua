@@ -11,13 +11,13 @@ function shiny(atkdef,spespc)
 		if atkdef == 0xA2 or atkdef == 0xA3 or atkdef == 0xA6 or atkdef == 0xA7 or atkdef == 0xAA or atkdef == 0xAB or atkdef == 0xAE or atkdef == 0xAF then
 			return " shiny"
 		else
-			return false
+			return ""
 		end
 	else
 		return ""
 	end
 end
-local partystart
+
 version = memory.readword(0x14e)
 if version == 0xc1a2 or version == 0x36dc or version == 0xd5dd or version == 0x299c then
 	print("RBGY JPN game detected")
@@ -44,6 +44,7 @@ while true do
 	partysize = memory.readbyte(partystart-8)-1
 	
 	p = 1
+	print(partysize)
 	for i = (partystart+0xe),(partystart+ 0xe +partysize*0x2c),0x2c do
 		pexp =  0x10000*memory.readbyte(i)+0x100*memory.readbyte(i+1) + memory.readbyte(i+2)
 		gui.text(2,p*10,tostring(p).." "..naturename[pexp%25+1]..shiny(memory.readbyte(i+0xd), memory.readbyte(i+0xe)))
