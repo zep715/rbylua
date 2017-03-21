@@ -47,16 +47,19 @@ savestate.save(state)
 while true do
    
     emu.frameadvance()
-   
-    atkdef = 0
-    spespc = 0
     savestate.save(state)
-    while atkdef == 0 and spespc == 0 do
+    i=0
+    while i < 20 do
         joypad.set(1, {A=true})
         vba.frameadvance()
-        atkdef = memory.readbyte(dv_addr)
-        spespc = memory.readbyte(dv_addr+1)
+        
+	i=i+1
     end
+    atkdef = memory.readbyte(dv_addr)
+    spespc = memory.readbyte(dv_addr+1)
+    --print(i)
+    print(atkdef)
+    print(spespc)
     if shiny(atkdef,spespc) then
         print("Shiny!!! Script stopped.")
         print(string.format("atk: %d", math.floor(atkdef/16)))
