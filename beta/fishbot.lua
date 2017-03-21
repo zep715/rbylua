@@ -13,8 +13,8 @@ local a_fished_species
 local ivs_addr
 local version = memory.readword(0x14e)
 if version == 0xc1a2 or version == 0x36dc or version == 0xd5dd or version == 0x299c then
-	print("rbgy jpn not supported yet")
-	return
+	a_fished_species = 0xd036
+	ivs_addr = 0xcfd8
 elseif version == 0xe691 or version == 0xa9d then
 	print("RB USA detected")
 	a_fished_species = 0xd059
