@@ -4,7 +4,7 @@
 --for index number and set in target
 --example horsea
 --local target = 92
-local target
+local target 
 
 --da confermare per giallo e rbg/giapponesi
 local a_flagbite = 0xcd3d
