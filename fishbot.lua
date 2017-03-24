@@ -1,5 +1,5 @@
 -- v0.1 fishbot
---set up species, look for serebii for fishable pokémon in your area and look 
+--set up species, look for serebii for fishable pokemon in your area and look 
 --http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_(Generation_I)
 --for index number and set in target
 --example horsea
@@ -72,7 +72,7 @@ while true do
 	end
 	fished = memory.readbyte(a_flagbite)
 	if fished == 0x2 then
-		print("you're fishing where there are no pokémon")
+		print("you're fishing where there are no pokemon")
 		break
 	elseif fished == 0x1 then
 		--pescato qualcosa, vediamo se è la specie cercata
@@ -112,7 +112,7 @@ while true do
 			end
 		else
 			--specie sbagliata
-			print(string.format("wrong species %d %2X", memory.readbyte(a_fished_species), memory.readbyte(0xffd3)))
+			print("wrong species")
 			savestate.load(state)
 		end
 	else
