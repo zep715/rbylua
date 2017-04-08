@@ -58,14 +58,14 @@ while true do
     atkdef = memory.readbyte(dv_addr)
     spespc = memory.readbyte(dv_addr+1)
     --print(i)
-    print(atkdef)
-    print(spespc)
+    print(atkdef) --remove this line for slight speed improvment
+    print(spespc) --remove this line for slight speed improvment
     if shiny(atkdef,spespc) then
         print("Shiny!!! Script stopped.")
-        print(string.format("atk: %d", math.floor(atkdef/16)))
-        print(string.format("def: %d", atkdef%16))
-        print(string.format("spe: %d", math.floor(spespc/16)))
-        print(string.format("spe: %d", spespc%16))
+        print(string.format("Atk: %d", math.floor(atkdef/16)))
+        print(string.format("Def: %d", atkdef%16))
+        print(string.format("Spc: %d", math.floor(spespc/16)))
+        print(string.format("Spe: %d", spespc%16))
         savestate.save(state)
         break
     else
