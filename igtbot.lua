@@ -3,7 +3,7 @@ local base_address
 local atkdef
 local spespc
 --0 for maximum speed, 1 for count SRs
-local countsr = 0 
+local countsr = 0
 i=1
 
         print("RBGY In-Game Trade Bot by zep715")
@@ -71,7 +71,7 @@ while true do
         spespc = memory.readbyte(dv_addr+1)
     end
     if shiny(atkdef,spespc) then
-        print(string.format("Shiny!!! Script stopped. No. SRs: ", i))
+        print("Shiny!!! Script stopped. No. SRs: "..i)
         print(string.format("Atk: %d", math.floor(atkdef/16)))
         print(string.format("Def: %d", atkdef%16))
         print(string.format("Spc: %d", math.floor(spespc/16)))
@@ -80,7 +80,7 @@ while true do
         break
     else
     if countsr == 1 then
-	print(string.format("SRs: ", i))
+	print("SRs: "..i)
         i=i+1
         savestate.load(state)
     else
