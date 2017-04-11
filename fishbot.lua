@@ -13,22 +13,23 @@ local a_fished_species
 local ivs_addr
 local version = memory.readword(0x14e)
 if version == 0xc1a2 or version == 0x36dc or version == 0xd5dd or version == 0x299c then
+	print("RBGY JAP detected")
 	a_fished_species = 0xd036
 	ivs_addr = 0xcfd8
 elseif version == 0xe691 or version == 0xa9d then
-	print("RB USA detected")
+	print("Red/Blue USA detected")
 	a_fished_species = 0xd059
 	ivs_addr = 0xcff1
 elseif version == 0x7c04 then
-	print("Y USA detected")
+	print("Yellow USA detected")
 	a_fished_species = 0xd058
 	ivs_addr = 0xcff0
 elseif version == 0xd289 or version == 0x9c5e or version == 0xdc5c or version == 0xbc2e or version == 0x4a38 or version == 0xd714 or version == 0xfc7a or version == 0xa456 then
-	print("RB EUR detected")
+	print("Red/Blue EUR detected")
 	a_fished_species = 0xd05e
 	ivs_addr = 0xcff6
 elseif version == 0x8f4e or version == 0xfb66 or version == 0x3756 or version == 0xc1b7 then
-	print("Y EUR detected")
+	print("Yellow EUR detected")
 	a_fished_species = 0xd05d
 	ivs_addr = 0xcff5
 else
@@ -72,13 +73,13 @@ while true do
 	end
 	fished = memory.readbyte(a_flagbite)
 	if fished == 0x2 then
-		print("you're fishing where there are no pokemon")
+		print("You're fishing where there are no pokemon")
 		break
 	elseif fished == 0x1 then
 		--pescato qualcosa, vediamo se è la specie cercata
 		if memory.readbyte(a_fished_species) == target then
 			savestate.save(state)
-			print("species found, now searching for ivs")
+			print("Species found, now searching for ivs")
 			i = 0;
 			--aspetta che finisca il dialogo
 			while i<210 do
@@ -103,21 +104,25 @@ while true do
 				print(atkdef)
 				print(spespc)
 				if shiny(atkdef,spespc) then
-					print("shiny found")
+					print("Shiny!!! Script stopped.")
+        				print(string.format("Atk: %d", math.floor(atkdef/16)))
+       					print(string.format("Def: %d", atkdef%16))
+       		 			print(string.format("Spe: %d", math.floor(spespc/16)))
+        				print(string.format("Spc: %d", spespc%16))
 					return
 				else
-					print("wrong ivs")
+					print("Wrong ivs")
 					savestate.load(state)
 				end
 			end
 		else
 			--specie sbagliata
-			print("wrong species")
+			print("Wrong species")
 			savestate.load(state)
 		end
 	else
 		--non ho pescato niente
-		print("nothing bited")
+		print("Nothing bited")
 		savestate.load(state)
 	end
 		
