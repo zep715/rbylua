@@ -44,7 +44,7 @@ while true do
     tid = memory.readword(a_tid)
     print(reverseword(tid))
     if tid == desired_tid then
-        print("ID found!")
+        print("TID found!")
         return
     else
         savestate.load(state)
