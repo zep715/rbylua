@@ -3,21 +3,27 @@ Lua scripts for shiny hunting in RBY games.
 
 Work only with vba rr 23.6.
 
-Do not use lua scripts inside the dev folder, since they're not ready yet.
-# How to use
-Choose the appropriate region of your ROM. If you're unsure about it, run version_check first.
+
 ## Gift ##
-Valid also for starters. DVs are generated after prompted to nickname your Pokémon.
+DVs are generated after prompted to nickname your Pokémon.
 
 Put the cursor over "no" (nicknames not yet supported) and run the script
+
+Valid for: starters, fossils, in-game gifts (eevee, lapras, ...) and game corner prizes.
+
 ## Stationary ##
-There are five stationaries: Snorlax, the three birds and Mewtwo.
+DVs are generated when the battle begins.
 
 Interact with the sprite, stop at the cry text before the battle and run the script.
-# dev log
-added dev/fishing
 
-added unified_gift and stationary, tested but not on all versions, can be used
+Valid for: Snorlax, Zapdos, Articuno, Moltres, Mewtwo, Electrode/Voltorb in Power Plant.
 
-v.02 stationary script: better battle check 
+## Fishing ##
 
+Species is generated first, and the IVs. Thanks Collector Togami for the info.
+
+Edit the script for desidered species, editing index number.
+
+Index number can be found here: http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_(Generation_I)
+
+Select your rod, put cursor over "use" and run the script. 
