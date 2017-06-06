@@ -46,3 +46,8 @@ Run with the cursor over "New Game" in main screen.
 
 Run the script before last input before animation (should be at text "connect your link cable" or something like that).
 
+## wild (requires IPS patch) ##
+
+To use with [patches](https://www.reddit.com/r/pokemonrng/comments/6e8kvm/ips_patches_pokemon_red_blue_with_fixed_rng_and/)
+Thanks to Aligateur!
+
