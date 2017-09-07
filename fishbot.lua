@@ -1,10 +1,10 @@
 -- v0.1 fishbot
---set up species, look for serebii for fishable pokemon in your area and look 
+--set up species, look for serebii for fishable pokemon in your area and look
 --http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_(Generation_I)
 --for index number and set in target
 --example horsea
 --local target = 92
-local target 
+local target
 
 --da confermare per giallo e rbg/giapponesi
 local a_flagbite = 0xcd3d
@@ -43,7 +43,7 @@ local spespc
 
 function shiny(atkdef,spespc)
 	if spespc == 0xAA then
-		if atkdef == 0xA2 or atkdef == 0xA3 or atkdef == 0xA6 or atkdef == 0xA7 or atkdef == 0xAA or atkdef == 0xAB or atkdef == 0xAE or atkdef == 0xAF then
+		if atkdef == 0x2A or atkdef == 0x3A or atkdef == 0x6A or atkdef == 0x7A or atkdef == 0xAA or atkdef == 0xBA or atkdef == 0xEA or atkdef == 0xFA then
 			return true
 		else
 			return false
@@ -93,7 +93,7 @@ while true do
 				atkdef = 0
 				spespc = 0
 				while memory.readbyte(0xc027)~=0xf0 do
-					
+
 					joypad.set(1, {A=true})
 					emu.frameadvance()
 					atkdef = memory.readbyte(ivs_addr)
@@ -125,7 +125,7 @@ while true do
 		print("Nothing bited")
 		savestate.load(state)
 	end
-		
-	
+
+
 
 end

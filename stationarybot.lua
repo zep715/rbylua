@@ -28,7 +28,7 @@ end
 
 function shiny(atkdef,spespc)
 	if spespc == 0xAA then
-		if atkdef == 0xA2 or atkdef == 0xA3 or atkdef == 0xA6 or atkdef == 0xA7 or atkdef == 0xAA or atkdef == 0xAB or atkdef == 0xAE or atkdef == 0xAF then
+		if atkdef == 0x2A or atkdef == 0x3A or atkdef == 0x6A or atkdef == 0x7A or atkdef == 0xAA or atkdef == 0xBA or atkdef == 0xEA or atkdef == 0xFA then
 			return true
 		else
 			return false
@@ -45,11 +45,11 @@ savestate.save(state)
 while true do
 	joypad.set(1, {A=true})
 	emu.frameadvance()
-	
+
 	atkdef = 0
 	spespc = 0
 	savestate.save(state)
-	
+
 	while memory.readbyte(flag_addr)~=0xf0 do
 		joypad.set(1, {A=false})
 		vba.frameadvance()
@@ -68,6 +68,6 @@ while true do
 		print("discarded")
 		savestate.load(state)
 	end
-	
-	
+
+
 end
