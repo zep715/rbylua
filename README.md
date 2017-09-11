@@ -3,6 +3,7 @@ Lua scripts for shiny hunting in RBY games.
 
 Work only with vba rr 23.6.
 
+Thanks to zaksabeast for updating the scripts for 1.3 transporter update!
 
 ## Gift ##
 DVs are generated after prompted to nickname your Pokémon.
