@@ -27,11 +27,11 @@ end
 local size = memory.readbyte(base_address)-1
 local dv_addr = (base_address+0x23)+size*0x2C
 
- 
- 
+
+
 function shiny(atkdef,spespc)
     if spespc == 0xAA then
-        if atkdef == 0xA2 or atkdef == 0xA3 or atkdef == 0xA6 or atkdef == 0xA7 or atkdef == 0xAA or atkdef == 0xAB or atkdef == 0xAE or atkdef == 0xAF then
+        if atkdef == 0x2A or atkdef == 0x3A or atkdef == 0x6A or atkdef == 0x7A or atkdef == 0xAA or atkdef == 0xBA or atkdef == 0xEA or atkdef == 0xFA then
             return true
         else
             return false
@@ -40,19 +40,19 @@ function shiny(atkdef,spespc)
         return false
     end
 end
- 
+
 state = savestate.create()
 savestate.save(state)
- 
+
 while true do
-   
+
     emu.frameadvance()
     savestate.save(state)
     i=0
     while i < 20 do
         joypad.set(1, {A=true})
         vba.frameadvance()
-        
+
 	i=i+1
     end
     atkdef = memory.readbyte(dv_addr)
@@ -69,6 +69,6 @@ while true do
 		print("discarded")
         savestate.load(state)
     end
-   
-   
+
+
 end
