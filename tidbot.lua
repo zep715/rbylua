@@ -46,7 +46,7 @@ while true do
     print(tid)
 
     for tid_count = 1, table.getn(desired_tid) do
-	    if tid == desired_tid then
+	    if tid == desired_tid[tid_count] then
 	        print("TID found!")
 	        return
 	    end
