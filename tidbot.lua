@@ -1,10 +1,12 @@
 --edit this line with desired tid, in decimal, value between 0 and 65535
-local desired_tid = 0
+local desired_tid = {1,2,3,4}
 local a_tid
 local tid
+
 function reverseword(w)
     return (w % 256)*256+math.floor(w/256)
 end
+
 local version = memory.readword(0x14e)
 if version == 0xc1a2 or version == 0x36dc or version == 0xd5dd or version == 0x299c then
     print("RBGY JPN game detected")
@@ -27,7 +29,6 @@ else
   return
 end
  
-desired_tid = reverseword(desired_tid)
 state = savestate.create()
 savestate.save(state)
 while true do
@@ -41,14 +42,14 @@ while true do
         vba.frameadvance()
         x=x+1
     end
-    tid = memory.readword(a_tid)
-    print(reverseword(tid))
-    if tid == desired_tid then
-        print("TID found!")
-        return
-    else
-        savestate.load(state)
+    tid = reverseword(memory.readword(a_tid))
+    print(tid)
+
+    for tid_count = 1, table.getn(desired_tid) do
+	    if tid == desired_tid[tid_count] then
+	        print("TID found!")
+	        return
+	    end
     end
-   
- 
+    savestate.load(state)
 end
