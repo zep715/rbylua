@@ -27,6 +27,8 @@ Edit the script for desidered species, editing index number.
 
 Index numbers can be found here: http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_(Generation_I)
 
+Edit the script if you want to see the non shiny pokemon IVs (Edit "local op").
+
 Select your rod, put cursor over "use" and run the script. 
 
 ## Nature check ##
