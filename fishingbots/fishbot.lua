@@ -5,10 +5,10 @@
 --example horsea
 --local target = 92
 
-print("RBGY In-Game Trade Bot by zep715")
+print("RBGY Fishing Bot by zep715")
 print("Optimised/Edited by Phosky71 | Available at https://github.com/Phosky71/rbylua")
 
-local target = 133
+local target
 
 --"Write 7 if you want to get no shiny IVs"
 --local op = 7
