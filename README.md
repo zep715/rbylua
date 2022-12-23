@@ -22,11 +22,13 @@ Valid for: Snorlax, Zapdos, Articuno, Moltres, Mewtwo, Electrode/Voltorb in Powe
 ## Fishing ##
 
 - autospecie_fishingbot metod
+
 Select your rod, put cursor over "use" and run the script. 
 
 The script will select the first pokemon found
 
 - fishbot metod
+
 Species is generated first, and the IVs. Thanks Collector Togami for the info.
 
 Edit the script for desidered species, editing index number.
